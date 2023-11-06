@@ -16,7 +16,7 @@ class Matrix:
     def __init__(self, *args) -> None:
         self.matrix = []
         if len(args) == 1:
-            self.matrix = list(args)
+            self.matrix = args[0]
         else:
             for _ in range(args[0]):
                 self.matrix += [list(random.choices(range(20), k=args[1]))]
@@ -30,6 +30,16 @@ class Matrix:
                 str: Строковое представление матрицы, разделенное табуляциями.
             """
             return '\n'.join(['\t'.join(map(str, row)) for row in self.matrix])
+    
+
+    def __repr__(self):
+        """
+        Возвращает удобное для разработчика представление матрицы.
+
+        Returns:
+            str: Строковое представление матрицы, разделенное табуляциями.
+        """
+        return f'{type(self).__name__}({self.matrix!r})'
 
 
     def __add__(self, other):
